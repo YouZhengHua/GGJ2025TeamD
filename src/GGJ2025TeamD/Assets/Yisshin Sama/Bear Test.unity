@@ -381,12 +381,12 @@ Transform:
   m_GameObject: {fileID: 152907282}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.76, y: -5.38, z: 0}
+  m_LocalPosition: {x: 0.00999999, y: 0.23999977, z: 0.016544757}
   m_LocalScale: {x: 1.3321875, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1206524001}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 876302170}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &266662891
 GameObject:
@@ -417,8 +417,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84dc136915ca34a689f90ab694f14bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BearColumn: {fileID: 1087834352}
-  Bubble: {fileID: 152907283}
   BearSpeed: 10
   BubbleSpeed: 0.15
   BubbleDissapearSpeed: 0.1
@@ -431,12 +429,62 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 266662891}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.76, y: -5.38, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.00999999, y: 0.23999977, z: 0.016544757}
   m_LocalScale: {x: 1.3321875, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 126485646}
+  m_Father: {fileID: 876302170}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &876302168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 876302170}
+  - component: {fileID: 876302169}
+  m_Layer: 0
+  m_Name: Bear
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &876302169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876302168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84dc136915ca34a689f90ab694f14bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BearSpeed: 10
+  BubbleSpeed: 0.15
+  BubbleDissapearSpeed: 0.1
+  offset: 0.15
+--- !u!4 &876302170
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876302168}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.75, y: -5.62, z: -0.016544757}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 266662893}
+  - {fileID: 152907283}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &878171215
@@ -608,7 +656,7 @@ GameObject:
   - component: {fileID: 1087834353}
   m_Layer: 0
   m_Name: Bear column
-  m_TagString: Untagged
+  m_TagString: BearColumn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1016,5 +1064,4 @@ SceneRoots:
   - {fileID: 1757467402}
   - {fileID: 878171218}
   - {fileID: 1148933386}
-  - {fileID: 266662893}
-  - {fileID: 152907283}
+  - {fileID: 876302170}
