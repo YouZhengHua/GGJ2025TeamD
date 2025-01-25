@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b6f640262afac40c787164dfa760f485
+guid: a7ad70a02bf81a741a782113886ec21d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4338928236674095663
-    second: Cup_0
+      213: 5088061565370793657
+    second: Faded Circle_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,30 +109,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cup_0
+      name: Faded Circle_0
       rect:
         serializedVersion: 2
-        x: 44
+        x: 0
         y: 0
-        width: 296
-        height: 384
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1d5e023e1c709c3c0800000000000000
-      internalID: -4338928236674095663
+      spriteID: 9be7e37390d6c9640800000000000000
+      internalID: 5088061565370793657
       vertices: []
       indices: 
       edges: []
@@ -160,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Cup_0: -4338928236674095663
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
