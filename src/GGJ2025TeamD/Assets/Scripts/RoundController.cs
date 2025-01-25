@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class RoundController : MonoBehaviour
 {
@@ -13,11 +15,16 @@ public class RoundController : MonoBehaviour
     private int passMaxAmonut = 100;
     [SerializeField]
     private int bonusCount = 0;
-    
-    private void Start()
+
+    private void Awake()
     {
         GlobalEvent.OnRoundEnd += OnRoundEnd;
         GlobalEvent.OnRoundStart += RoundStart;
+    }
+
+    private void Start()
+    {
+
         nowScore = 0;
         bonusCount = 0;
     }

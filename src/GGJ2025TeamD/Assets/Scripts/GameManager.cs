@@ -25,9 +25,10 @@ public class GameManager : MonoBehaviour
             _instance = value;
         }
     }
-    
+
+    private float nowTime = 0f;
     private bool isInGame = false;
-    private float totalGameTime = 120f;
+    private float totalGameTime = 20f;
 
     public float NowTime => Mathf.Max(totalGameTime - Time.timeSinceLevelLoad, 0f);
 
@@ -42,16 +43,17 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        GlobalEvent.OnGameStart += GameStart;
     }
 
     private void Start()
     {
         Init();
-        GlobalEvent.OnGameStart += GameStart;
     }
 
     public void Init()
     {
+        nowTime = 0f;
         TimeManager.TimeResume();
         
         GlobalEvent.RaiseGameStart();
@@ -61,8 +63,10 @@ public class GameManager : MonoBehaviour
     {
         if (isInGame)
         {
-            if (Time.timeSinceLevelLoad >= totalGameTime)
+            nowTime += Time.deltaTime;
+            if (nowTime >= totalGameTime)
             {
+                isInGame = false;
                 GameEnd();
             }
         }

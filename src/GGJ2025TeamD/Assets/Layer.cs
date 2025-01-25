@@ -22,8 +22,9 @@ public class Layer : MonoBehaviour
 
     private float dealyTime = 0f;
     
-    private void Start()
+    private void Awake()
     {
+        Debug.Log("LayerAwake");
         GlobalEvent.OnRoundStart += OnRoundReady;
     }
     
@@ -31,6 +32,7 @@ public class Layer : MonoBehaviour
     {
         Debug.Log("RoundReady");
         cupReady = true;
+        OnClick = false;
         layer.rotation = Quaternion.Euler(0, 0, 0);
         bear.localScale = new Vector3(1.332188f, 0, 1);
         bubble.localScale = new Vector3(1.332188f, 0, 1);
@@ -43,8 +45,8 @@ public class Layer : MonoBehaviour
 
     private void Update()
     {
-        //if (!cupReady)
-            //return;
+        if (!cupReady)
+            return;
         
         if (Input.GetMouseButtonDown(0))
         {
