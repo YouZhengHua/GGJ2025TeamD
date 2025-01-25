@@ -295,7 +295,7 @@ Transform:
   m_GameObject: {fileID: 126485645}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.24, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -344,13 +344,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0.6964086, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 1, y: 0.4726429}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0
   m_SpriteTileMode: 1
   m_WasSpriteAssigned: 1
@@ -397,7 +397,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 266662893}
-  - component: {fileID: 266662892}
   m_Layer: 0
   m_Name: Bear
   m_TagString: Untagged
@@ -405,22 +404,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &266662892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 266662891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84dc136915ca34a689f90ab694f14bbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BearSpeed: 10
-  BubbleSpeed: 0.15
-  BubbleDissapearSpeed: 0.1
-  offset: 0.15
 --- !u!4 &266662893
 Transform:
   m_ObjectHideFlags: 0
@@ -466,10 +449,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84dc136915ca34a689f90ab694f14bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BearSpeed: 10
-  BubbleSpeed: 0.15
+  BearSpeed: 20
+  BubbleSpeed: 1.5
   BubbleDissapearSpeed: 0.1
-  offset: 0.15
+  offset: 0.2
 --- !u!4 &876302170
 Transform:
   m_ObjectHideFlags: 0
@@ -817,7 +800,7 @@ Transform:
   m_GameObject: {fileID: 1206524000}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.04, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -872,7 +855,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 1, y: -4.07}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0
   m_SpriteTileMode: 1
   m_WasSpriteAssigned: 1

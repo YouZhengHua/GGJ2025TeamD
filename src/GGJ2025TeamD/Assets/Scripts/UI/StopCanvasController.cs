@@ -40,7 +40,7 @@ public class StopCanvasController : MonoBehaviour
         
         if (canvasGroup.alpha == 0)
         {
-            //TimeManager.TimeStop();
+            TimeManager.TimeStop();
         }
     }
 
