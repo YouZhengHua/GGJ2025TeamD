@@ -44,3 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcce65a5db6eb6d4cae8fea996d0ed1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minValue: 0.5
+  maxValue: 0.9
+  minDistance: 0.2
+  maxDistance: 0.2
+  passMinAmount: 0
+  passMaxAmonut: 1
+  bonusCount: 0
+  cupPrefab: {fileID: 8034601881824476954, guid: 5091417b962ff4940a86ba5d4aab8c21, type: 3}
+  cupContainer: {fileID: 0}
+  cupLeftTransform: {fileID: 0}
+  cupRightTransform: {fileID: 0}
+  cupCenterTransform: {fileID: 0}
+  bear: {fileID: 0}
+  cupMoveSpeed: 8

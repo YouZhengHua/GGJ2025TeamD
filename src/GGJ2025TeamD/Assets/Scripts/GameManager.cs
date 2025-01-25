@@ -1,5 +1,4 @@
-using System.Runtime.CompilerServices;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,7 +9,7 @@ public class GameManager : MonoBehaviour
         {
             if (_instance == null)
             {
-                _instance = FindObjectOfType<GameManager>();
+                _instance = FindFirstObjectByType<GameManager>();
                 if (_instance == null)
                 {
                     GameObject go = new GameObject();
@@ -28,7 +27,8 @@ public class GameManager : MonoBehaviour
 
     private float nowTime = 0f;
     private bool isInGame = false;
-    private float totalGameTime = 20f;
+    private float totalGameTime = 120f;
+    public int nowScore = 0;
 
     public float NowTime => Mathf.Max(totalGameTime - Time.timeSinceLevelLoad, 0f);
 
@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
             DontDestroyOnLoad(this.gameObject);
+            Init();
         }
         else
         {
@@ -46,16 +47,17 @@ public class GameManager : MonoBehaviour
         GlobalEvent.OnGameStart += GameStart;
     }
 
-    private void Start()
-    {
-        Init();
-    }
-
     public void Init()
     {
         nowTime = 0f;
+        nowScore = 0;
         TimeManager.TimeResume();
-        
+
+        Invoke("DelayGameStart", 0.5f);
+    }
+
+    private void DelayGameStart()
+    {
         GlobalEvent.RaiseGameStart();
     }
 
@@ -81,7 +83,7 @@ public class GameManager : MonoBehaviour
     {
         isInGame = true;
         
-        GlobalEvent.RaiseRoundStart();
+        GlobalEvent.RaiseRoundReset();
     }
 
     private void GameEnd()

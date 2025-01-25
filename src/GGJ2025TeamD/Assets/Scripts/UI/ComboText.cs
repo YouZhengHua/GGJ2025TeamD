@@ -2,28 +2,28 @@
 using UnityEngine;
 
 [RequireComponent(typeof(TMP_Text))]
-public class ScoreText : MonoBehaviour
+public class ComboText : MonoBehaviour
 {
     [SerializeField]
     private TMP_Text? text;
     [SerializeField]
-    private string scoreText = "Score: ";
+    private string scoreText = "Combo: ";
 
     private void Start()
     {
-        GlobalEvent.OnScoreChange += SetScore;
+        GlobalEvent.OnComboChange += SetCombo;
     }
 
     private void OnDestroy()
     {
-        GlobalEvent.OnScoreChange -= SetScore;
+        GlobalEvent.OnComboChange -= SetCombo;
     }
 
-    private void SetScore(int score)
+    private void SetCombo(int combo)
     {
         if (text != null)
         {
-            text.text = scoreText + score.ToString();
+            text.text = scoreText + combo.ToString();
         }
     }
 }

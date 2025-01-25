@@ -1,80 +1,57 @@
-using System;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Layer : MonoBehaviour
 {
-    private float MouseOriginalY;
     public Transform layer;
     public float RotateSpeed;
     private bool OnClick;
-    public float offset;
     private bool cupReady = false;
 
-    [SerializeField]
-    private Transform bear;
-    [SerializeField]
-    private Transform bubble;
-    [SerializeField]
-    private float bearAmount = 0f;
-    
-    private float bearSpeed = 0.2f;
+    [SerializeField] private InputActionReference pourAction;
 
-    private float dealyTime = 0f;
-    
     private void Awake()
     {
-        Debug.Log("LayerAwake");
         GlobalEvent.OnRoundStart += OnRoundReady;
+        pourAction.action.performed += OnPourAction;
+        pourAction.action.Enable();
     }
-    
+
+    private float clickY = 0f;
+
+    private void OnPourAction(InputAction.CallbackContext context)
+    {
+        OnClick = true;
+        clickY = Mouse.current.position.ReadValue().y;
+    }
+
     private void OnRoundReady()
     {
-        Debug.Log("RoundReady");
         cupReady = true;
         OnClick = false;
         layer.rotation = Quaternion.Euler(0, 0, 0);
-        bear.localScale = new Vector3(1.332188f, 0, 1);
-        bubble.localScale = new Vector3(1.332188f, 0, 1);
     }
 
     private void OnDestroy()
     {
         GlobalEvent.OnRoundStart -= OnRoundReady;
+        pourAction.action.performed -= OnPourAction;
     }
 
     private void Update()
     {
-        if (!cupReady)
+        if (!cupReady || TimeManager.IsTimeStopped)
             return;
         
-        if (Input.GetMouseButtonDown(0))
+        if (OnClick)
         {
-            transform.position = new Vector3(transform.position.x,
-                Camera.main.ScreenToWorldPoint(Input.mousePosition).y + offset,
-                transform.position.z);
-            if (hits().collider != null)
-            {
-                OnClick = true;
-            }
-        }
-        if (Input.GetMouseButton(0))
-        {
-            if (hits().collider !=null)
-            {
-                OnDrag(false);
-            }
+            OnDrag();
 
-            if (hits().collider == null && OnClick)
+            if(pourAction.action.ReadValue<float>() <= 0)
             {
-                OnDrag(true);
+                OnEndDrag();
+                OnClick = false;
             }
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            OnEndDrag();
-            OnClick = false;
         }
     }
 
@@ -88,36 +65,21 @@ public class Layer : MonoBehaviour
 
     private void DealayRoundEnd()
     {
-        GlobalEvent.RaiseRoundEnd(0.8f);
-    }
-    
-    public void OnDrag(bool isOutOfBox)
-    {
-        float Y = Input.GetAxis("Mouse Y");
-        float rotateAngle = 0;
-        if (Y < 0f)
-        {
-            rotateAngle = RotateSpeed * Time.deltaTime;
-        }
-        else if(Y > 0f)
-        {
-            rotateAngle = -1 * RotateSpeed * Time.deltaTime;
-        }
-        float currentRotationZ = layer.eulerAngles.z + rotateAngle;
-        currentRotationZ = Mathf.Clamp(currentRotationZ, 0, 90);
-        if (isOutOfBox)
-        {
-            layer.rotation = Quaternion.Euler(0, 0, 90);
-        }
-        else
-        {
-            layer.rotation = Quaternion.Euler(0, 0, currentRotationZ);
-        }
+        GlobalEvent.RaiseMouseUp();
     }
 
-    private RaycastHit2D hits()
+    [SerializeField]
+    private float dragDistanceRate = 0.1f;
+
+    public void OnDrag()
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        return Physics2D.Raycast(mousePos, Vector2.zero);
+        float Y = Mouse.current.position.ReadValue().y;
+        float diff = Mathf.Max(clickY - Y, 0f);
+        float rate = diff / (Screen.height * dragDistanceRate);
+        rate = Mathf.Clamp(rate, 0f, 1f);
+        float targetAngle = 90 * rate;
+        float currentRotationZ = layer.eulerAngles.z;
+        float newRotationZ = Mathf.MoveTowardsAngle(currentRotationZ, targetAngle, RotateSpeed * Time.deltaTime);
+        layer.rotation = Quaternion.Euler(0, 0, newRotationZ);
     }
 }

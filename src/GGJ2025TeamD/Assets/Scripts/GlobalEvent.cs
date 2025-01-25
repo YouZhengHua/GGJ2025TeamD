@@ -1,5 +1,4 @@
-using UnityEngine;
-using System;
+﻿using System;
 
 public class GlobalEvent
 {
@@ -21,7 +20,13 @@ public class GlobalEvent
     {
         OnRoundStart?.Invoke();
     }
-    
+
+    public static event Action? OnRoundReset;
+    public static void RaiseRoundReset()
+    {
+        OnRoundReset?.Invoke();
+    }
+
     /// <summary>
     /// 倒飲料結束
     /// </summary>
@@ -57,5 +62,29 @@ public class GlobalEvent
     public static void RaiseScoreChange(int score)
     {
         OnScoreChange?.Invoke(score);
+    }
+
+    public static event Action<int>? OnComboChange;
+    public static void RaiseComboChange(int combo)
+    {
+        OnComboChange?.Invoke(combo);
+    }
+
+    public static event Action? OnBubbleOverHeight;
+    public static void RaiseBubbleOverHeight()
+    {
+        OnBubbleOverHeight?.Invoke();
+    }
+
+    public static event Action? OnBearOverHeight;
+    public static void RaiseBearOverHeight()
+    {
+        OnBearOverHeight?.Invoke();
+    }
+
+    public static event Action? OnMouseUp;
+    public static void RaiseMouseUp()
+    {
+        OnMouseUp?.Invoke();
     }
 }

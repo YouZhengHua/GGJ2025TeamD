@@ -1,59 +1,122 @@
-using System;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class RoundController : MonoBehaviour
 {
-    private int minValue = 50;
-    private int maxValue = 100;
-    
-    private int nowScore = 0;
+    [SerializeField]
+    private float minValue = 0.5f;
+    [SerializeField]
+    private float maxValue = 1f;
+    [SerializeField]
+    private float minDistance = 0.2f;
+    [SerializeField]
+    private float maxDistance = 0.2f;
     
     [SerializeField]
-    private int passMinAmount = 0;
+    private float passMinAmount = 0f;
     [SerializeField]
-    private int passMaxAmonut = 100;
+    private float passMaxAmonut = 1f;
     [SerializeField]
     private int bonusCount = 0;
+
+    [SerializeField]
+    private GameObject cupPrefab;
+    [SerializeField]
+    private Transform cupContainer;
+    private List<CupController> cupList = new List<CupController>();
+    private CupController nowCup;
+    private CupController preCup;
+    [SerializeField]
+    private Transform cupLeftTransform;
+    [SerializeField]
+    private Transform cupRightTransform;
+    [SerializeField]
+    private Transform cupCenterTransform;
+
+    private bool isOverHeight = false;
 
     private void Awake()
     {
         GlobalEvent.OnRoundEnd += OnRoundEnd;
-        GlobalEvent.OnRoundStart += RoundStart;
+        GlobalEvent.OnRoundReset += RoundReset;
+        GlobalEvent.OnBubbleOverHeight += OnOverHeight;
+        GlobalEvent.OnBearOverHeight += OnOverHeight;
     }
 
     private void Start()
     {
-
-        nowScore = 0;
         bonusCount = 0;
     }
 
     private void OnDestroy()
     {
-        GlobalEvent.OnRoundStart -= RoundStart;
         GlobalEvent.OnRoundEnd -= OnRoundEnd;
+        GlobalEvent.OnRoundReset -= RoundReset;
+        GlobalEvent.OnBubbleOverHeight -= OnOverHeight;
+        GlobalEvent.OnBearOverHeight -= OnOverHeight;
     }
 
-    /// <summary>
-    /// 生成飲料杯
-    /// 生成合格標準
-    /// </summary>
-    private void RoundStart()
+    private void RoundReset()
     {
-        passMinAmount = Random.Range(minValue, maxValue - 10);
-        passMaxAmonut = passMinAmount + 10;
+        CupController cup = this.GetCup();
+        nowCup = cup;
+        cup.transform.position = cupLeftTransform.position;
+        moveToCenter = true;
+        float distance = Random.Range(minDistance, maxDistance);
+        passMinAmount = Random.Range(minValue, maxValue - distance);
+        passMaxAmonut = passMinAmount + distance;
+        isOverHeight = false;
+        cup.gameObject.SetActive(true);
+        cup.SetMaxAndMin(passMaxAmonut, passMinAmount);
+    }
+
+    private bool moveToCenter = false;
+    private bool moveToRight = false;
+    [SerializeField]
+    private float cupMoveSpeed = 10f;
+
+    private void OnOverHeight()
+    {
+        isOverHeight = true;
+    }
+
+    private void Update()
+    {
+        if (nowCup != null && moveToCenter)
+        {
+            nowCup.transform.position = Vector3.Lerp(nowCup.transform.position, cupCenterTransform.position, Time.deltaTime * cupMoveSpeed);
+            if(Vector3.Distance(nowCup.transform.position, cupCenterTransform.position) < 0.1f)
+            {
+                moveToCenter = false;
+                nowCup.transform.position = cupCenterTransform.position;
+                GlobalEvent.RaiseRoundStart();
+            }
+        }
+
+        if (preCup != null && moveToRight)
+        {
+            preCup.transform.position = Vector3.Lerp(preCup.transform.position, cupRightTransform.position, Time.deltaTime * cupMoveSpeed);
+            if (Vector3.Distance(preCup.transform.position, cupRightTransform.position) < 0.1f)
+            {
+                moveToRight = false;
+                preCup.transform.position = cupRightTransform.position;
+                preCup.gameObject.SetActive(false);
+            }
+        }
     }
 
     private void OnRoundEnd(float value)
     {
-        if (value >= passMinAmount && value <= passMaxAmonut)
+        preCup = nowCup;
+        moveToRight = true;
+        if (!isOverHeight && value >= passMinAmount && value <= passMaxAmonut)
         {
-            bonusCount += 1;
             
-            nowScore += 100;
+            GameManager.Instance.nowScore += 100 + Mathf.Max(bonusCount - 1, 0) * 10;
+            bonusCount += 1; 
             
-            GlobalEvent.RaiseScoreChange(nowScore);
+            GlobalEvent.RaiseScoreChange(GameManager.Instance.nowScore);
             GlobalEvent.RaiseRoundSuccess();
         }
         else
@@ -61,10 +124,20 @@ public class RoundController : MonoBehaviour
             bonusCount = 0;
             GlobalEvent.RaiseRoundFail();
         }
-        
-        GlobalEvent.RaiseGameStart();
+
+        GlobalEvent.RaiseComboChange(bonusCount);
+
+        GlobalEvent.RaiseRoundReset();
     }
-    
-    public int GetMinAmount => passMinAmount;
-    public int GetMaxAmount => passMaxAmonut;
+
+    private CupController GetCup()
+    {
+        CupController cup = cupList.Find(c => !c.gameObject.activeSelf);
+        if (cup == null)
+        {
+            cup = Instantiate(cupPrefab, cupContainer).GetComponent<CupController>();
+            cupList.Add(cup);
+        }
+        return cup;
+    }
 }

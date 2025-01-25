@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public static class TimeManager
 {
@@ -11,4 +11,6 @@ public static class TimeManager
     {
         Time.timeScale = 1f;
     }
+
+    public static bool IsTimeStopped => Time.timeScale == 0f;
 }

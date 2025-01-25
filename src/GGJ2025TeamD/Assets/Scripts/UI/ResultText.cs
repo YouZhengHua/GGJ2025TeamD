@@ -1,7 +1,5 @@
-using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [RequireComponent(typeof(TMP_Text))]
 public class ResultText : MonoBehaviour

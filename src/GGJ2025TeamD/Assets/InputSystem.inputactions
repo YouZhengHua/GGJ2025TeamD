@@ -28,6 +28,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Game",
+            "id": "ba5aa8aa-7e1a-4192-9848-71d55b4af73d",
+            "actions": [
+                {
+                    "name": "PourBeer",
+                    "type": "Button",
+                    "id": "3a27f73e-34be-4c3e-94b1-15aeb043e076",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8f26c20a-684f-4570-96c2-a7e35a427e27",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PourBeer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

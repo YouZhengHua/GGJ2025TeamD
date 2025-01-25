@@ -1,6 +1,4 @@
-using System;
-using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 public class EndCanvasController : MonoBehaviour
 {
@@ -32,7 +30,8 @@ public class EndCanvasController : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        GameManager.Instance.Init();
+        SceneManager.sceneLoaded += OnSceneLoadedEnd;
+
     }
     
     [SerializeField]
@@ -40,5 +39,11 @@ public class EndCanvasController : MonoBehaviour
     public void BackToMenu()
     {
         SceneManager.LoadScene(menuSceneName);
+    }
+
+    private void OnSceneLoadedEnd(Scene scene, LoadSceneMode mode)
+    {
+        SceneManager.sceneLoaded -= OnSceneLoadedEnd;
+        GameManager.Instance.Init();
     }
 }

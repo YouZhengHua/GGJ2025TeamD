@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -35,19 +35,22 @@ public class StopCanvasController : MonoBehaviour
 
     private void Toggle()
     {
-        
         canvasGroup.alpha = canvasGroup.alpha == 0 ? 1 : 0;
         
-        if (canvasGroup.alpha == 0)
+        if (canvasGroup.alpha == 1)
         {
             TimeManager.TimeStop();
+        }
+        else
+        {
+            TimeManager.TimeResume();
         }
     }
 
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        GameManager.Instance.Init();
+        SceneManager.sceneLoaded += OnSceneLoadedEnd;
     }
     
     [SerializeField]
@@ -55,5 +58,11 @@ public class StopCanvasController : MonoBehaviour
     public void BackToMenu()
     {
         SceneManager.LoadScene(menuSceneName);
+    }
+
+    private void OnSceneLoadedEnd(Scene scene, LoadSceneMode mode)
+    {
+        SceneManager.sceneLoaded -= OnSceneLoadedEnd;
+        GameManager.Instance.Init();
     }
 }

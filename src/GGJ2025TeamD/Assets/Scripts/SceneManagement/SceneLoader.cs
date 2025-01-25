@@ -8,5 +8,13 @@ public class SceneLoader : MonoBehaviour {
     public void Load()
     {
         SceneManager.LoadScene(SceneName);
+
+        SceneManager.sceneLoaded += OnSceneLoadedEnd;
+    }
+
+    private void OnSceneLoadedEnd(Scene scene, LoadSceneMode mode)
+    {
+        SceneManager.sceneLoaded -= OnSceneLoadedEnd;
+        GameManager.Instance.Init();
     }
 }

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bear : MonoBehaviour
 {
@@ -9,12 +9,38 @@ public class Bear : MonoBehaviour
     public float BubbleSpeed;
     public float BubbleDissapearSpeed;
     public float offset;
+
+    [SerializeField]
+    private float maxHeight;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         BearColumn = GameObject.FindGameObjectWithTag("BearColumn").transform;
         bear = gameObject.transform.GetChild(0);
         Bubble = gameObject.transform.GetChild(1);
+        GlobalEvent.OnRoundReset += OnRoundReady;
+        GlobalEvent.OnMouseUp += OnMouseUp;
+
+    }
+
+    private void OnRoundReady()
+    {
+        bear.localScale = new Vector3(1.332188f, 0, 1);
+        Bubble.localScale = new Vector3(1.332188f, 0, 1);
+        isBubbleOverHeight = false;
+        isBearOverHeight = false;
+    }
+
+    private void OnMouseUp()
+    {
+        GlobalEvent.RaiseRoundEnd(bear.transform.localScale.y / maxHeight);
+    }
+
+    private void OnDestroy()
+    {
+        GlobalEvent.OnRoundReset -= OnRoundReady;
+        GlobalEvent.OnMouseUp -= OnMouseUp;
     }
 
     // Update is called once per frame
@@ -39,5 +65,34 @@ public class Bear : MonoBehaviour
                     Bubble.localScale.z);
             }
         }
+
+        if(Bubble.localScale.y > maxHeight)
+        {
+            Bubble.localScale = new Vector3(Bubble.localScale.x, maxHeight, Bubble.localScale.z);
+            OnBubbleOverHeight();
+        }
+
+        if (bear.transform.localScale.y > maxHeight)
+        {
+            bear.transform.localScale = new Vector3(bear.transform.localScale.x, maxHeight, bear.transform.localScale.z);
+            OnBearOverHeight();
+        }
+    }
+
+    private bool isBubbleOverHeight = false;
+    private bool isBearOverHeight = false;
+
+    private void OnBubbleOverHeight()
+    {
+        if (isBubbleOverHeight)
+            return;
+        GlobalEvent.RaiseBubbleOverHeight();
+    }
+
+    private void OnBearOverHeight()
+    {
+        if (isBearOverHeight)
+            return;
+        GlobalEvent.RaiseBearOverHeight();
     }
 }
