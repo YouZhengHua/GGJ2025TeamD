@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Default String Table Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Default String Table
+  m_TableCollectionNameGuidString: 739b72c292e3430499d08393520c37e7
+  m_Entries:
+  - m_Id: 65321384796160
+    m_Key: Title Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65435314675712
+    m_Key: Play Button Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65633441013760
+    m_Key: Credit Button Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65678869520384
+    m_Key: Return Button Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65753544908800
+    m_Key: Menu Button Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70441770147840
+    m_Key: Restart Button Text
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 2626619499616141523
+  references:
+    version: 2
+    RefIds:
+    - rid: 2626619499616141523
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1737778535785
