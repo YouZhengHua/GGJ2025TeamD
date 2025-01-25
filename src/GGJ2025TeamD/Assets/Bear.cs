@@ -20,6 +20,7 @@ public class Bear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(bear.transform.localScale.y/Bubble.localScale.y);
         float pourRate = BearColumn.localScale.x;
         bear.transform.localScale = new Vector3(bear.transform.localScale.x, 
             bear.transform.localScale.y + pourRate * BearSpeed *Time.deltaTime, 
@@ -30,7 +31,7 @@ public class Bear : MonoBehaviour
         if (pourRate <= 0f)
         {
             float BubbleHeight = Bubble.localScale.y * Mathf.Exp(-BubbleDissapearSpeed * Time.deltaTime);
-            if (BubbleHeight > bear.transform.localScale.y*0.1 + offset)
+            if (BubbleHeight > bear.transform.localScale.y + offset)
             {
                 Bubble.localScale = new Vector3(Bubble.localScale.x,
                     BubbleHeight,
