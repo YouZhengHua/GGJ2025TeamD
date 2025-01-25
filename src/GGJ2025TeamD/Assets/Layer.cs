@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class Layer : MonoBehaviour
@@ -7,8 +9,43 @@ public class Layer : MonoBehaviour
     public float RotateSpeed;
     private bool OnClick;
     public float offset;
+    private bool cupReady = false;
+
+    [SerializeField]
+    private Transform bear;
+    [SerializeField]
+    private Transform bubble;
+    [SerializeField]
+    private float bearAmount = 0f;
+    
+    private float bearSpeed = 0.2f;
+
+    private float dealyTime = 0f;
+    
+    private void Start()
+    {
+        GlobalEvent.OnRoundStart += OnRoundReady;
+    }
+    
+    private void OnRoundReady()
+    {
+        Debug.Log("RoundReady");
+        cupReady = true;
+        layer.rotation = Quaternion.Euler(0, 0, 0);
+        bear.localScale = new Vector3(1.332188f, 0, 1);
+        bubble.localScale = new Vector3(1.332188f, 0, 1);
+    }
+
+    private void OnDestroy()
+    {
+        GlobalEvent.OnRoundStart -= OnRoundReady;
+    }
+
     private void Update()
     {
+        //if (!cupReady)
+            //return;
+        
         if (Input.GetMouseButtonDown(0))
         {
             transform.position = new Vector3(transform.position.x,
@@ -39,10 +76,19 @@ public class Layer : MonoBehaviour
         }
     }
 
-    public void OnEndDrag()
+    private void OnEndDrag()
     {
         layer.rotation = Quaternion.Euler(0, 0, 0);
+        cupReady = false;
+        
+        Invoke("DealayRoundEnd", 1f);
     }
+
+    private void DealayRoundEnd()
+    {
+        GlobalEvent.RaiseRoundEnd(0.8f);
+    }
+    
     public void OnDrag(bool isOutOfBox)
     {
         float Y = Input.GetAxis("Mouse Y");

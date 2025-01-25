@@ -1,11 +1,14 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(TMP_Text))]
 public class ScoreText : MonoBehaviour
 {
     [SerializeField]
-    private TMP_Text? scoreText;
+    private TMP_Text? text;
+    [SerializeField]
+    private string scoreText = "Score: ";
 
     private void Start()
     {
@@ -19,9 +22,9 @@ public class ScoreText : MonoBehaviour
 
     private void SetScore(int score)
     {
-        if (scoreText != null)
+        if (text != null)
         {
-            scoreText.text = score.ToString();
+            text.text = scoreText + score.ToString();
         }
     }
 }

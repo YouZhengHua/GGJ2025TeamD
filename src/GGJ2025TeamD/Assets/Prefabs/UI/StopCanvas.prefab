@@ -600,7 +600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 5578727731109620016}
   triggerAction: {fileID: -8869691114513748088, guid: 35d1c19c5be9b3f4a9f1b0051b11fc85, type: 3}
-  menuSceneName: Menu
+  menuSceneName: Start
 --- !u!225 &5578727731109620016
 CanvasGroup:
   m_ObjectHideFlags: 0

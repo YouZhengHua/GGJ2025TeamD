@@ -20,7 +20,8 @@ public class Bear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(bear.transform.localScale.y/Bubble.localScale.y);
+        //Debug.Log(bear.transform.localScale.y/Bubble.localScale.y);
+        // 倒酒的速率
         float pourRate = BearColumn.localScale.x;
         bear.transform.localScale = new Vector3(bear.transform.localScale.x, 
             bear.transform.localScale.y + pourRate * BearSpeed *Time.deltaTime, 
