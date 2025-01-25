@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     public void Init()
     {
         nowTime = 0f;
-        Time.timeScale = 1f;
+        TimeManager.TimeResume();
         GlobalEvent.OnGameStart += GameStart;
         GlobalEvent.RaiseGameStart();
     }

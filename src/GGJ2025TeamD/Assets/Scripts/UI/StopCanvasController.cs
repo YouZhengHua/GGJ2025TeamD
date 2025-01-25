@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-public class SoptCanvasController : MonoBehaviour
+public class StopCanvasController : MonoBehaviour
 {
     [SerializeField]
     private CanvasGroup canvasGroup;
@@ -19,7 +19,9 @@ public class SoptCanvasController : MonoBehaviour
     {
         triggerAction.action.performed += OnTriggered;
         triggerAction.action.Enable();
+        canvasGroup.alpha = 0;
     }
+
 
     private void OnDestroy()
     {
@@ -33,8 +35,13 @@ public class SoptCanvasController : MonoBehaviour
 
     private void Toggle()
     {
+        
         canvasGroup.alpha = canvasGroup.alpha == 0 ? 1 : 0;
-        Time.timeScale = canvasGroup.alpha == 0 ? 1 : 0;
+        
+        if (canvasGroup.alpha == 0)
+        {
+            TimeManager.TimeStop();
+        }
     }
 
     public void Restart()
