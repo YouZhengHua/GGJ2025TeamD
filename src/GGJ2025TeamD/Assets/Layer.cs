@@ -65,7 +65,7 @@ public class Layer : MonoBehaviour
 
     private void DealayRoundEnd()
     {
-        GlobalEvent.RaiseMouseUp();
+        GlobalEvent.RaiseRoundEnd();
     }
 
     [SerializeField]

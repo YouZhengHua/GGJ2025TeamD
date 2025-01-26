@@ -25,8 +25,10 @@ public class RoundController : MonoBehaviour
     [SerializeField]
     private Transform cupContainer;
     private List<CupController> cupList = new List<CupController>();
-    private CupController nowCup;
-    private CupController preCup;
+    private CupController? nowCup;
+    private CupController? preCup;
+    
+    public CupController? NowCup => nowCup;
     [SerializeField]
     private Transform cupLeftTransform;
     [SerializeField]
@@ -69,6 +71,7 @@ public class RoundController : MonoBehaviour
         isOverHeight = false;
         cup.gameObject.SetActive(true);
         cup.SetMaxAndMin(passMaxAmonut, passMinAmount);
+        cup.Init();
     }
 
     private bool moveToCenter = false;
@@ -106,11 +109,11 @@ public class RoundController : MonoBehaviour
         }
     }
 
-    private void OnRoundEnd(float value)
+    private void OnRoundEnd()
     {
         preCup = nowCup;
         moveToRight = true;
-        if (!isOverHeight && value >= passMinAmount && value <= passMaxAmonut)
+        if (!isOverHeight && nowCup.AmountRate >= passMinAmount && nowCup.AmountRate <= passMaxAmonut)
         {
             
             GameManager.Instance.nowScore += 100 + Mathf.Max(bonusCount - 1, 0) * 10;

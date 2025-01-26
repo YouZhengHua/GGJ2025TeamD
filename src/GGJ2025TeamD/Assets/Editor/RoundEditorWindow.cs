@@ -25,7 +25,7 @@ namespace Editor
             
             var roundEndButton = new Button(() =>
                 {
-                    GlobalEvent.RaiseRoundEnd(roundEndAmount.value);
+                    GlobalEvent.RaiseRoundEnd();
                 })
                 { text = "Raise Round End" };
             rootVisualElement.Add(roundEndButton);

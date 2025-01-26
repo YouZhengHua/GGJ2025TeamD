@@ -30,11 +30,11 @@ public class GlobalEvent
     /// <summary>
     /// 倒飲料結束
     /// </summary>
-    public static event Action<float>? OnRoundEnd;
+    public static event Action? OnRoundEnd;
 
-    public static void RaiseRoundEnd(float value)
+    public static void RaiseRoundEnd()
     {
-        OnRoundEnd?.Invoke(value);
+        OnRoundEnd?.Invoke();
     }
     
     public static event Action? OnRoundSuccess;
@@ -86,11 +86,5 @@ public class GlobalEvent
     public static void RaiseMouseUp()
     {
         OnMouseUp?.Invoke();
-    }
-    
-    public static event Action<float>? OnFlowUpdate;
-    public static void RaiseFlowUpdate(float flow)
-    {
-        OnFlowUpdate?.Invoke(flow);
     }
 }

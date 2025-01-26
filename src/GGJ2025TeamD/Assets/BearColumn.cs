@@ -6,18 +6,27 @@ public class BearColumn : MonoBehaviour
     public Transform layer;
     [SerializeField]
     private AnimationCurve curve;
-
-    private float flowValue =0f;
+    [SerializeField]
+    private float flowRate = 500f;
     [SerializeField]
     private float maxWidth = 0.3f;
-    private void Start()
-    {
-    }
+    [SerializeField]
+    private RoundController roundController;
 
     private void Update()
     {
-        flowValue = curve.Evaluate(layer.eulerAngles.z);
-        transform.localScale = new Vector3(maxWidth * flowValue, transform.localScale.y, transform.localScale.z);
-        GlobalEvent.RaiseFlowUpdate(flowValue);
+        float flowValue = curve.Evaluate(layer.eulerAngles.z);
+        if (flowValue > 0f)
+        {
+            transform.localScale = new Vector3(maxWidth * flowValue, transform.localScale.y, transform.localScale.z);
+            if (roundController.NowCup != null)
+            {
+                roundController.NowCup.AddAmount(flowValue * flowRate * Time.deltaTime, flowRate);
+            }
+        }
+        else
+        {
+            transform.localScale = new Vector3(0f, transform.localScale.y, transform.localScale.z);
+        }
     }
 }

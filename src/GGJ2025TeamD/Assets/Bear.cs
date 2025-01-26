@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Reflection;
+using UnityEngine;
 
 public class Bear : MonoBehaviour
 {
@@ -34,7 +35,7 @@ public class Bear : MonoBehaviour
 
     private void OnMouseUp()
     {
-        GlobalEvent.RaiseRoundEnd(bear.transform.localScale.y / maxHeight);
+        GlobalEvent.RaiseRoundEnd();
     }
 
     private void OnDestroy()
