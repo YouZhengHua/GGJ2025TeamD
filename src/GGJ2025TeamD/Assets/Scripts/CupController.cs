@@ -35,16 +35,18 @@ public class CupController : MonoBehaviour
         minTransform.localPosition = new Vector3(minTransform.localPosition.x, zeroTransform.localPosition.y + distance * min, minTransform.localPosition.z);
         maxTransform.localPosition = new Vector3(maxTransform.localPosition.x, zeroTransform.localPosition.y + distance * max, maxTransform.localPosition.z);
     }
-
+    
     private void Update()
     {
-        if (bubbleAmount > 0 && bubbleAmount > bearAmount * 0.1f)
+        if (bubbleAmount > 0 && bubbleAmount > bearAmount * 0.2f)
         {
-            bubbleAmount -= bubbleAmount * 0.1f * Time.deltaTime;
+            float diff = bubbleAmount * 0.2f * Time.deltaTime;
+            bubbleAmount -= diff;
+            bearAmount += diff * 0.5f;
         }
 
-        bearSR.material.SetFloat("_Amonut", bearAmount / totalAmount);
-        bubbleSR.material.SetFloat("_Amonut", (bubbleAmount + bearAmount) / totalAmount);
+        bearSR.material.SetFloat("_Amount", bearAmount / totalAmount);
+        bubbleSR.material.SetFloat("_Amount", (bubbleAmount + bearAmount) / totalAmount);
     }
 
     public void AddAmount(float value, float flowRate)
@@ -70,8 +72,8 @@ public class CupController : MonoBehaviour
         bearAmount = 0f;
         bubbleFull.SetActive(false);
         
-        bearSR.material.SetFloat("_Amonut", 0);
-        bubbleSR.material.SetFloat("_Amonut", 0);
+        bearSR.material.SetFloat("_Amount", 0);
+        bubbleSR.material.SetFloat("_Amount", 0);
     }
 
     public float AmountRate => bearAmount / totalAmount;
