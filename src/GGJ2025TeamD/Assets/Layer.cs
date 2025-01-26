@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Layer : MonoBehaviour
@@ -7,8 +8,10 @@ public class Layer : MonoBehaviour
     public float RotateSpeed;
     private bool OnClick;
     private bool cupReady = false;
+    
 
     [SerializeField] private InputActionReference pourAction;
+    public AudioManager audioManager;
 
     private void Awake()
     {
@@ -17,11 +20,17 @@ public class Layer : MonoBehaviour
         pourAction.action.Enable();
     }
 
+    private void Start()
+    {
+        
+    }
+
     private float clickY = 0f;
 
     private void OnPourAction(InputAction.CallbackContext context)
     {
         OnClick = true;
+        if(cupReady) AudioManager.PlaySound(SoundType.LAYER_ON);
         clickY = Mouse.current.position.ReadValue().y;
     }
 
@@ -59,7 +68,7 @@ public class Layer : MonoBehaviour
     {
         layer.rotation = Quaternion.Euler(0, 0, 0);
         cupReady = false;
-        
+        AudioManager.PlaySound(SoundType.LAYER_OFF);
         Invoke("DealayRoundEnd", 1f);
     }
 

@@ -10,6 +10,7 @@ public class Bear : MonoBehaviour
     public float BubbleSpeed;
     public float BubbleDissapearSpeed;
     public float offset;
+    private bool isPlaying;
 
     [SerializeField]
     private float maxHeight;
@@ -50,6 +51,12 @@ public class Bear : MonoBehaviour
         //Debug.Log(bear.transform.localScale.y/Bubble.localScale.y);
         // 倒酒的速率
         float pourRate = BearColumn.localScale.x;
+        if (pourRate > 0 && !isPlaying)
+        {
+            AudioManager.PlaySound(SoundType.BEER);
+            AudioManager.PlaySound(SoundType.BUBBLE);
+            isPlaying = true;
+        }
         bear.transform.localScale = new Vector3(bear.transform.localScale.x, 
             bear.transform.localScale.y + pourRate * BearSpeed *Time.deltaTime, 
             bear.transform.localScale.z);
@@ -58,9 +65,12 @@ public class Bear : MonoBehaviour
             Bubble.localScale.z);
         if (pourRate <= 0f)
         {
+            isPlaying = false;
+            AudioManager.StopSound(SoundType.BEER);
             float BubbleHeight = Bubble.localScale.y * Mathf.Exp(-BubbleDissapearSpeed * Time.deltaTime);
             if (BubbleHeight > bear.transform.localScale.y + offset)
             {
+                AudioManager.StopSound(SoundType.BUBBLE);
                 Bubble.localScale = new Vector3(Bubble.localScale.x,
                     BubbleHeight,
                     Bubble.localScale.z);

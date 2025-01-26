@@ -12,6 +12,7 @@ public class BearColumn : MonoBehaviour
     private float maxWidth = 0.3f;
     [SerializeField]
     private RoundController roundController;
+    private bool isPlayingSound;
 
     private void Update()
     {
@@ -23,10 +24,18 @@ public class BearColumn : MonoBehaviour
             {
                 roundController.NowCup.AddAmount(flowValue * flowRate * Time.deltaTime, flowRate);
             }
+
+            if (!isPlayingSound)
+            {
+                AudioManager.PlaySound(SoundType.BEER_WATER);
+                isPlayingSound = true;
+            }
         }
         else
         {
             transform.localScale = new Vector3(0f, transform.localScale.y, transform.localScale.z);
+            AudioManager.StopSound(SoundType.BEER_WATER);
+            isPlayingSound = false;
         }
     }
 }
