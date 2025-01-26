@@ -39,6 +39,26 @@ MonoBehaviour:
     m_Key: Restart Button Text
     m_Metadata:
       m_Items: []
+  - m_Id: 387983713755136
+    m_Key: Score Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 388040173281280
+    m_Key: Combo Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 388553635782656
+    m_Key: Numbers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 388580621934592
+    m_Key: Success Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 388709739388928
+    m_Key: Fail Text
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

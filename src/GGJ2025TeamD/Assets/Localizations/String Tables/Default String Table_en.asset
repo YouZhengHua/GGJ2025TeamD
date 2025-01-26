@@ -42,6 +42,26 @@ MonoBehaviour:
     m_Localized: Restart
     m_Metadata:
       m_Items: []
+  - m_Id: 387983713755136
+    m_Localized: Score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 388040173281280
+    m_Localized: Combo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 388553635782656
+    m_Localized: 1234567890
+    m_Metadata:
+      m_Items: []
+  - m_Id: 388580621934592
+    m_Localized: Success
+    m_Metadata:
+      m_Items: []
+  - m_Id: 388709739388928
+    m_Localized: Fail
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
