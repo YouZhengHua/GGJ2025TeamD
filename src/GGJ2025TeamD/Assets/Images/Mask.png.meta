@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: b6f640262afac40c787164dfa760f485
+guid: b69653e38bec5f144b9740066382cb25
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4338928236674095663
-    second: Cup_0
+      213: -4166580829966953713
+    second: Mask_0
+  - first:
+      213: -710117256364220538
+    second: Mask_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +49,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 48
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -109,30 +112,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cup_0
+      name: Mask_0
       rect:
         serializedVersion: 2
-        x: 44
-        y: 0
-        width: 296
-        height: 384
+        x: 0
+        y: 27
+        width: 128
+        height: 228
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1d5e023e1c709c3c0800000000000000
-      internalID: -4338928236674095663
+      spriteID: f031ed58fc45d26c0800000000000000
+      internalID: -4166580829966953713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mask_1
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 32
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68f19812e182526f0800000000000000
+      internalID: -710117256364220538
       vertices: []
       indices: 
       edges: []
@@ -151,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Cup_0: -4338928236674095663
+      Mask_0: -4166580829966953713
+      Mask_1: -710117256364220538
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

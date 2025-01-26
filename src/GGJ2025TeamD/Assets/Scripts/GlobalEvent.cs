@@ -87,4 +87,10 @@ public class GlobalEvent
     {
         OnMouseUp?.Invoke();
     }
+    
+    public static event Action<float>? OnFlowUpdate;
+    public static void RaiseFlowUpdate(float flow)
+    {
+        OnFlowUpdate?.Invoke(flow);
+    }
 }

@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         nowScore = 0;
         TimeManager.TimeResume();
 
-        Invoke("DelayGameStart", 0.5f);
+        Invoke("DelayGameStart", 0.1f);
     }
 
     private void DelayGameStart()
