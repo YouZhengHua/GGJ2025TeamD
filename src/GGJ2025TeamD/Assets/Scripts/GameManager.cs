@@ -45,6 +45,45 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
         GlobalEvent.OnGameStart += GameStart;
+        GlobalEvent.OnRoundSuccess += OnRoundSuccess;
+        GlobalEvent.OnBearOverHeight += OnOverHeight;
+        GlobalEvent.OnBubbleOverHeight += OnOverHeight;
+        GlobalEvent.OnRoundFail += OnRoundFail;
+    }
+    
+    private bool isOverHeight = false;
+
+    private int successCount = 0;
+    private int failCount = 0;
+    private int overHeightCount = 0;
+    
+    public int SuccessCount => successCount;
+    public int FailCount => failCount;
+    public int OverHeightCount => overHeightCount;
+    
+    
+    private void OnRoundSuccess()
+    {
+        successCount += 1;
+        GlobalEvent.RaiseScoreChange(nowScore);
+    }
+    
+    private void OnRoundFail()
+    {
+        if (isOverHeight)
+        {
+            overHeightCount += 1;
+        }
+        else
+        {
+            failCount += 1;
+        }
+        isOverHeight = false;
+    }
+
+    private void OnOverHeight()
+    {
+        isOverHeight = true;
     }
 
     public void Init()
@@ -77,12 +116,18 @@ public class GameManager : MonoBehaviour
     private void OnDestroy()
     {
         GlobalEvent.OnGameStart -= GameStart;
+        GlobalEvent.OnRoundSuccess -= OnRoundSuccess;
+        GlobalEvent.OnBearOverHeight -= OnOverHeight;
+        GlobalEvent.OnBubbleOverHeight -= OnOverHeight;
+        GlobalEvent.OnRoundFail -= OnRoundFail;
     }
 
     private void GameStart()
     {
         isInGame = true;
-        
+        successCount = 0;
+        failCount = 0;
+        overHeightCount = 0;
         GlobalEvent.RaiseRoundReset();
     }
 
