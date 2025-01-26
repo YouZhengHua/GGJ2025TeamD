@@ -860,9 +860,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1668760823899659143, guid: a1eeadb03abd28a47a81cb311aeb749a, type: 3}
+      propertyPath: m_Color.a
+      value: 0.7176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 3411576901307151573, guid: a1eeadb03abd28a47a81cb311aeb749a, type: 3}
+      propertyPath: m_Colors.m_NormalColor.a
+      value: 0.77254903
+      objectReference: {fileID: 0}
+    - target: {fileID: 3411576901307151573, guid: a1eeadb03abd28a47a81cb311aeb749a, type: 3}
+      propertyPath: m_Colors.m_PressedColor.a
+      value: 0.77254903
+      objectReference: {fileID: 0}
+    - target: {fileID: 3411576901307151573, guid: a1eeadb03abd28a47a81cb311aeb749a, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.a
+      value: 0.77254903
+      objectReference: {fileID: 0}
+    - target: {fileID: 3411576901307151573, guid: a1eeadb03abd28a47a81cb311aeb749a, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.a
+      value: 0.77254903
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774213202505566419, guid: a1eeadb03abd28a47a81cb311aeb749a, type: 3}
+      propertyPath: m_Color.a
+      value: 0.7176471
+      objectReference: {fileID: 0}
     - target: {fileID: 6933679451928779949, guid: a1eeadb03abd28a47a81cb311aeb749a, type: 3}
       propertyPath: m_Name
       value: EndCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8030688208314670642, guid: a1eeadb03abd28a47a81cb311aeb749a, type: 3}
+      propertyPath: m_Colors.m_NormalColor.a
+      value: 0.77254903
+      objectReference: {fileID: 0}
+    - target: {fileID: 8030688208314670642, guid: a1eeadb03abd28a47a81cb311aeb749a, type: 3}
+      propertyPath: m_Colors.m_PressedColor.a
+      value: 0.77254903
+      objectReference: {fileID: 0}
+    - target: {fileID: 8030688208314670642, guid: a1eeadb03abd28a47a81cb311aeb749a, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.a
+      value: 0.77254903
+      objectReference: {fileID: 0}
+    - target: {fileID: 8030688208314670642, guid: a1eeadb03abd28a47a81cb311aeb749a, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.a
+      value: 0.77254903
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

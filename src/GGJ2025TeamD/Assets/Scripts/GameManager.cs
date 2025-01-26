@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     private float nowTime = 0f;
     private bool isInGame = false;
-    private float totalGameTime = 120f;
+    private float totalGameTime = 60f;
     public int nowScore = 0;
 
     public float NowTime => Mathf.Max(totalGameTime - Time.timeSinceLevelLoad, 0f);
