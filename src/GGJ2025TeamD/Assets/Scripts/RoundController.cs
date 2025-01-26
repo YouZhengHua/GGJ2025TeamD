@@ -116,8 +116,8 @@ public class RoundController : MonoBehaviour
         if (!isOverHeight && nowCup.AmountRate >= passMinAmount && nowCup.AmountRate <= passMaxAmonut)
         {
             
-            GameManager.Instance.nowScore += 100 + Mathf.Max(bonusCount - 1, 0) * 10;
             bonusCount += 1; 
+            GameManager.Instance.nowScore += 100 + Mathf.Max(bonusCount - 1, 0) * 10;
             
             GlobalEvent.RaiseScoreChange(GameManager.Instance.nowScore);
             GlobalEvent.RaiseRoundSuccess();

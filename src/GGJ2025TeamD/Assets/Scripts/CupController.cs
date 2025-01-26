@@ -20,7 +20,9 @@ public class CupController : MonoBehaviour
     [SerializeField]
     private float bubbleAmount = 0f;
     [SerializeField]
-    private AnimationCurve bubbleCurve;
+    private AnimationCurve bubbleAddCurve;
+    [SerializeField]
+    private AnimationCurve bubbleReduceCurve;
     
     [SerializeField]
     private GameObject bubbleFull;
@@ -28,6 +30,8 @@ public class CupController : MonoBehaviour
     private SpriteRenderer bearSR;
     [SerializeField]
     private SpriteRenderer bubbleSR;
+
+    private float bubbleTimer = 1f;
 
     public void SetMaxAndMin(float max, float min)
     {
@@ -38,9 +42,10 @@ public class CupController : MonoBehaviour
     
     private void Update()
     {
-        if (bubbleAmount > 0 && bubbleAmount > bearAmount * 0.2f)
+        if (bubbleAmount > 0 && bubbleAmount > bearAmount * 0.2f && bubbleTimer > 0f)
         {
-            float diff = bubbleAmount * 0.2f * Time.deltaTime;
+            bubbleTimer -= Time.deltaTime;
+            float diff = bubbleAmount * bubbleReduceCurve.Evaluate(bubbleTimer) * Time.deltaTime;
             bubbleAmount -= diff;
             bearAmount += diff * 0.5f;
         }
@@ -52,7 +57,7 @@ public class CupController : MonoBehaviour
     public void AddAmount(float value, float flowRate)
     {
         bearAmount += value;
-        bubbleAmount += value * bubbleCurve.Evaluate(flowRate);
+        bubbleAmount += value * bubbleAddCurve.Evaluate(flowRate);
         if (bearAmount > totalAmount)
         {
             GlobalEvent.RaiseBearOverHeight();
@@ -64,6 +69,8 @@ public class CupController : MonoBehaviour
             GlobalEvent.RaiseBubbleOverHeight();
             bubbleFull.SetActive(true);
         }
+
+        bubbleTimer = 1f;
     }
 
     public void Init()
