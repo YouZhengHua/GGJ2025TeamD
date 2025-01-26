@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
   m_GUID: fa44149513797224daaadf441fc3d2cf
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 9724887867beab94b90ed5b06179fb51
+    m_Address: Assets/Shaders/Shader Graphs_Vertical Fill Bear.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 5bebdd9539be51e4491f77c8303e9ad2, type: 2}
   m_SchemaSet:
