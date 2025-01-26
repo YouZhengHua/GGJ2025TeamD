@@ -51,7 +51,14 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 388553635782656
-    m_Localized: 1234567890
+    m_Localized: '1234567890
+
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+      abcdefghijklmnopqrstuvwxyz
+
+      /.
+      #,()_-'
     m_Metadata:
       m_Items: []
   - m_Id: 388580621934592
