@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - BearColumn
+  - Layer
   layers:
   - Default
   - TransparentFX
