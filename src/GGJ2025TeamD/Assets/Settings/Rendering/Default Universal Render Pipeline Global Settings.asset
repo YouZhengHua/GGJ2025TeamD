@@ -57,19 +57,9 @@ MonoBehaviour:
       - rid: 2626619525088411774
       - rid: 2626619525088411775
       - rid: 2626619525088411706
+      - rid: 6224919291870838784
     m_RuntimeSettings:
-      m_List:
-      - rid: 2626619499509973202
-      - rid: 2626619499509973203
-      - rid: 2626619499509973204
-      - rid: 2626619499509973206
-      - rid: 2626619499509973207
-      - rid: 2626619499509973208
-      - rid: 2626619499509973209
-      - rid: 2626619499509973213
-      - rid: 2626619499509973219
-      - rid: 2626619499509973220
-      - rid: 2626619525088411706
+      m_List: []
   m_AssetVersion: 8
   m_ObsoleteDefaultVolumeProfile: {fileID: 0}
   m_RenderingLayerNames:
@@ -299,3 +289,9 @@ MonoBehaviour:
       data:
         m_Version: 1
         m_UseBicubicLightmapSampling: 0
+    - rid: 6224919291870838784
+      type: {class: RenderingDebuggerRuntimeResources, ns: UnityEngine.Rendering, asm: Unity.RenderPipelines.Core.Runtime}
+      data:
+        m_version: 0
+        m_DebugUIHandlerCanvasPrefab: {fileID: 1153602445894428, guid: cf6cbdd672089a84796e55a21fed1cbe, type: 3}
+        m_DebugUIPersistentCanvasPrefab: {fileID: 1822588063230394, guid: f6b1a0fe75d5009449cf55ae76220e2b, type: 3}
